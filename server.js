@@ -60,3 +60,25 @@ app.get("/api/waitlist", function(req, res) {
  
   return res.json(waitlist);
 });
+//table
+app.post("/api/tables", function(req, res) {
+  var newTables = req.body;
+  newTables.routeName = newTables.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newTables);
+
+  tables.push(newTables);
+
+  res.json(newTables);
+});
+//waitlist
+app.post("/api/waitlist", function(req, res) {
+  var newWaitlist = req.body;
+  newWaitlist.routeName = newWaitlist.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newWaitlist);
+
+  waitlist.push(newWaitlist);
+
+  res.json(newWaitlist);
+});
