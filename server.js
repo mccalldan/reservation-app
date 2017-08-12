@@ -18,25 +18,9 @@ app.listen(PORT, function() {
 
 });
 
-var tables = [{
-	 routeName: "billwith",
-  name: "billwith",
-  phone: 9195626352,
-  email: "fk@mail.com",
-  uniqueId: 4100
- 
+var tables = [];
 
-}]
-
-var waitlist = [{
-	 routeName: "billwith",
-  name: "billwith",
-  phone: 9195626352,
-  email: "fk@mail.com",
-  uniqueId: 4100
- 
-
-}]
+var waitlist = [];
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
@@ -62,23 +46,30 @@ app.get("/api/waitlist", function(req, res) {
 });
 //table
 app.post("/api/tables", function(req, res) {
-  var newTables = req.body;
-  newTables.routeName = newTables.name.replace(/\s+/g, "").toLowerCase();
+  var newTable = req.body;
+  
+if(tables.length <5){
+  console.log(newTable);
 
-  console.log(newTables);
+  tables.push(newTable);
 
-  tables.push(newTables);
-
-  res.json(newTables);
+  res.json(true);
+}
+else{
+	waitlist.push(newTable)
+	console.log("Waitlisted!");
+	res.json(false);
+}
 });
 //waitlist
 app.post("/api/waitlist", function(req, res) {
-  var newWaitlist = req.body;
-  newWaitlist.routeName = newWaitlist.name.replace(/\s+/g, "").toLowerCase();
+	
+//   var newWaitlist = req.body;
+//   newWaitlist.routeName = newWaitlist.name.replace(/\s+/g, "").toLowerCase();
 
-  console.log(newWaitlist);
+//   console.log(newWaitlist);
 
-  waitlist.push(newWaitlist);
+//   waitlist.push(newWaitlist);
 
-  res.json(newWaitlist);
-});
+//   res.json(newWaitlist);
+ });
