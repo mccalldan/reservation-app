@@ -1,0 +1,27 @@
+{
+  "name": "reservation",
+  "version": "1.0.0",
+  "description": "app for making reservations",
+  "main": "express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mccalldan/reservation-app.git"
+  },
+  "author": "group",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mccalldan/reservation-app/issues"
+  },
+  "homepage": "https://github.com/mccalldan/reservation-app#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "http": "0.0.0",
+    "inquirer": "^3.2.1",
+    "mysql": "^2.14.1"
+  }
+}
