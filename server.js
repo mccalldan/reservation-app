@@ -28,6 +28,16 @@ var tables = [{
 
 }]
 
+var waitlist = [{
+	 routeName: "billwith",
+  name: "billwith",
+  phone: 9195626352,
+  email: "fk@mail.com",
+  uniqueId: 4100
+ 
+
+}]
+
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
@@ -42,17 +52,11 @@ app.get("/reserve", function(req, res) {
 });
 
 app.get("/api/tables", function(req, res) {
-  var chosen = req.params.tables;
-
-  if (chosen) {
-    console.log(chosen);
-
-    for (var i = 0; i < tables.length; i++) {
-      if (chosen === tables[i].routeName) {
-        return res.json(tables[i]);
-      }
-    }
-    return res.json(false);
-  }
+ 
   return res.json(tables);
+});
+
+app.get("/api/waitlist", function(req, res) {
+ 
+  return res.json(waitlist);
 });
