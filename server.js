@@ -18,6 +18,15 @@ app.listen(PORT, function() {
 
 });
 
+var tables = [{
+	 routeName: "billwith",
+  name: "billwith",
+  phone: 9195626352,
+  email: "fk@mail.com",
+  uniqueId: 4100
+ 
+
+}]
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
@@ -30,4 +39,20 @@ app.get("/tables", function(req, res) {
 // Get all characters
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
+});
+
+app.get("/api/tables", function(req, res) {
+  var chosen = req.params.tables;
+
+  if (chosen) {
+    console.log(chosen);
+
+    for (var i = 0; i < tables.length; i++) {
+      if (chosen === tables[i].routeName) {
+        return res.json(tables[i]);
+      }
+    }
+    return res.json(false);
+  }
+  return res.json(tables);
 });
